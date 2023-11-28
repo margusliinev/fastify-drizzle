@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "noUnusedLocals": true,
+        "removeComments": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strict": true,
+        "target": "ES2022",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "outDir": "dist"
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "dist", "**/*spec.ts"]
+}
