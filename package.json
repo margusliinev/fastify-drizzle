@@ -11,16 +11,22 @@
         "typecheck": "tsc",
         "format": "prettier . --write",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
-        "migrate": "drizzle-kit generate:mysql",
-        "push": "drizzle-kit push:mysql"
+        "generate": "drizzle-kit generate:pg",
+        "push": "drizzle-kit push:pg",
+        "seed": "ts-node src/database/seed.ts",
+        "migrate": "ts-node src/database/migrate.ts"
     },
     "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "dotenv": "^16.3.1",
         "drizzle-orm": "^0.29.0",
         "fastify": "^4.24.3",
-        "mysql2": "^3.6.5"
+        "pg": "^8.11.3"
     },
     "devDependencies": {
+        "@types/bcryptjs": "^2.4.6",
         "@types/node": "^20.10.0",
+        "@types/pg": "^8.10.9",
         "@typescript-eslint/eslint-plugin": "^6.13.1",
         "@typescript-eslint/parser": "^6.13.1",
         "drizzle-kit": "^0.20.6",
