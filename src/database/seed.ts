@@ -15,10 +15,6 @@ async function seed() {
                 username: user.username,
                 email: user.email,
                 password: hashedPassword,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                jobTitle: user.jobTitle,
-                photo: user.photo,
             })
             .returning();
     }

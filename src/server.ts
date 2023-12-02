@@ -2,14 +2,17 @@ import dotenv from 'dotenv';
 dotenv.config();
 import Fastify from 'fastify';
 import { db } from './database';
-import { usersTable } from './database/schema';
 
 const fastify = Fastify({
     logger: false,
 });
 
 fastify.get('/', async function handler() {
-    const users = await db.select().from(usersTable);
+    const users = await db.query.usersTable.findMany({
+        with: {
+            posts: true,
+        },
+    });
     return { success: true, data: users };
 });
 
