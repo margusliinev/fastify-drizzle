@@ -8,11 +8,7 @@ const fastify = Fastify({
 });
 
 fastify.get('/', async function handler() {
-    const users = await db.query.usersTable.findMany({
-        with: {
-            posts: true,
-        },
-    });
+    const users = await db.query.users.findMany();
     return { success: true, data: users };
 });
 
