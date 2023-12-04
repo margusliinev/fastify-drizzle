@@ -15,8 +15,6 @@ async function seed() {
                 username: user.username,
                 email: user.email,
                 password: hashedPassword,
-                created_at: new Date(),
-                updated_at: new Date(),
             })
             .returning();
     }

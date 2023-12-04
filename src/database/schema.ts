@@ -3,8 +3,8 @@ import { relations } from 'drizzle-orm';
 
 // ENUMS
 
-export const userRoleEnum = pgEnum('role', ['ADMIN', 'DEVELOPER', 'USER']);
-export const projectRoleEnum = pgEnum('role', ['LEAD', 'MEMBER']);
+export const userRoleEnum = pgEnum('user_role', ['ADMIN', 'DEVELOPER', 'USER']);
+export const projectRoleEnum = pgEnum('project_role', ['LEAD', 'MEMBER']);
 export const projectStatusEnum = pgEnum('project_status', ['COMPLETED', 'MAINTENANCE', 'ON_HOLD', 'DEVELOPMENT', 'PLANNING']);
 export const ticketStatusEnum = pgEnum('ticket_status', ['RESOLVED', 'ON_HOLD', 'IN_DEVELOPMENT', 'ASSIGNED', 'UNASSIGNED']);
 export const ticketPriorityEnum = pgEnum('ticket_priority', ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW']);
@@ -30,8 +30,8 @@ export const projects = pgTable('projects', {
     id: serial('id').primaryKey(),
     title: varchar('title', { length: 255 }).notNull(),
     description: varchar('description', { length: 255 }).notNull(),
-    startDate: date('startDate').notNull(),
-    dueDate: date('dueDate').notNull(),
+    start_date: date('start_date').notNull(),
+    due_date: date('due_date').notNull(),
     created_at: timestamp('created_at', { mode: 'date', withTimezone: true, precision: 6 }).defaultNow().notNull(),
     updated_at: timestamp('updated_at', { mode: 'date', withTimezone: true, precision: 6 }).defaultNow().notNull(),
     completed_at: timestamp('completed_at', { mode: 'date', withTimezone: true, precision: 6 }),
@@ -80,13 +80,13 @@ export const comments = pgTable('comments', {
 // RELATIONS
 
 export const usersRelations = relations(users, ({ many }) => ({
-    projects: many(projects),
+    users_projects: many(users_projects),
     tickets: many(tickets),
     comments: many(comments),
 }));
 
 export const projectsRelations = relations(projects, ({ many }) => ({
-    users: many(users),
+    users_projects: many(users_projects),
     tickets: many(tickets),
 }));
 
